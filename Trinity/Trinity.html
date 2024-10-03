@@ -1,0 +1,271 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Trinity</title>
+    <style>
+        /* Reset some default styles */
+        body, h1, p {
+            margin: 0;
+            padding: 0;
+        }
+
+        /* Styling for the sidebars */
+        .sidebar {
+            position: fixed;
+            top: 70px;
+            height: 96.8%;
+            width: 23%; /* Increase the width as needed */
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        /* Styling for the left sidebar */
+        .sidebar-left {
+            left: 0;
+            background: url('bannana_1.png') no-repeat center center;
+            background-size: cover;
+        }
+
+        /* Styling for the right sidebar */
+        .sidebar-right {
+            right: 0;
+            background: url('bannana_2.png') no-repeat center center;
+            background-size: cover;
+        }
+
+        /* Style for the header with a 3D text effect */
+        header {
+            background-color: #333;
+            color: #fff;
+            padding: 20px;
+            text-align: center;
+            margin-left: 0%; /* Adjust to avoid overlapping with the left sidebar */
+            margin-right: 0%; /* Adjust to avoid overlapping with the right sidebar */
+        }
+
+        header h1 {
+            font-size: 3rem;
+            text-transform: uppercase;
+            text-shadow: 3px 3px 0px #000, 4px 4px 0px #000, 5px 5px 0px #000, 6px 6px 0px #000;
+        }
+
+        /* Style for the main content */
+        .container {
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+
+        /* Style for the GIF container */
+        .gif-container {
+            text-align: center;
+        }
+
+        /* Style for the GIF with 3D effect */
+        .gif {
+            max-width: 100%;
+            box-shadow: 5px 5px 15px rgba(0, 0, 0, 0.2); /* Adding a subtle shadow for a 3D effect */
+        }
+
+        /* Style for the additional text and title */
+        .additional-text {
+            text-align: center;
+            margin-top: 20px;
+        }
+
+        /* Style for the highlighted text in the additional-text section */
+        .additional-text .highlighted-text {
+            padding: 5px;
+            border-radius: 5px;
+            display: inline;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+            background: linear-gradient(to bottom, #000, #000);
+            -webkit-background-clip: text;
+            color: transparent;
+            font-size: 1.5rem;
+        }
+
+        /* Style for the product buttons */
+        .product-buttons {
+            display: flex;
+            justify-content: space-between; /* Distribute buttons evenly */
+            margin-top: 20px;
+        }
+
+        .product-button {
+            flex: 1;
+            text-align: center;
+            padding: 20px; /* Increase button size */
+            margin: 10px; /* Increase margin for spacing between buttons */
+            border: 2px solid #333;
+            border-radius: 5px;
+            background-color: #fff;
+            transition: transform 0.2s; /* Smooth transition for the pop-up effect */
+            font-size: 1.2rem; /* Increase font size for button text */
+            cursor: pointer; /* Add cursor pointer */
+        }
+
+        .product-button:hover {
+            transform: scale(1.05); /* Increase size on hover */
+        }
+
+        .product-button img {
+            max-width: 100px;
+            height: auto;
+        }
+
+        /* Style for the modal container */
+        .modal {
+            display: none;
+            position: fixed;
+            z-index: 1;
+            left: 0;
+            top: 0;
+            width: 100%;
+            height: 100%;
+            overflow: auto;
+            background-color: rgba(0,0,0,0.7);
+        }
+
+        /* Style for the modal content */
+        .modal-content {
+            background-color: #fff;
+            margin: 10% auto;
+            padding: 20px;
+            border: 1px solid #888;
+            width: 80%;
+            display: flex; /* Display content in a row */
+            align-items: center; /* Center content vertically */
+        }
+
+        /* Style for the close button */
+        .close-container {
+            display: flex;
+            justify-content: flex-end;
+        }
+
+        .close {
+            color: #000;
+            font-size: 28px;
+            font-weight: bold;
+            cursor: pointer;
+            height: auto;
+            width: fit-content;
+            text-align: center;
+            padding: 10px;
+            background-color: red;
+            border: 2px solid black;
+            transition: background-color 0.2s, transform 0.2s;
+        }
+
+        .close:hover {
+            background-color: darkred;
+            transform: scale(1.1);
+        }
+
+        /* Style for the details text */
+        .details-text {
+            flex: 1;
+            padding: 20px;
+            text-align: center;
+        }
+
+        /* Updated style for plain text in details */
+        .plain-details-text {
+            padding: 10px; /* Increase padding for space between lines */
+            font-size: 1rem;
+        }
+    </style>
+</head>
+<body>
+    <!-- Left Sidebar -->
+    <div class="sidebar sidebar-left"></div>
+
+    <!-- Right Sidebar -->
+    <div class="sidebar sidebar-right"></div>
+
+    <header>
+        <h1>Welcome to Trinity</h1>
+    </header>
+
+    <div class="container">
+        <!-- Add a GIF with 3D effect -->
+        <div class="gif-container">
+            <img src="Saul.gif" alt="Welcome GIF" class="gif">
+        </div>
+
+        <!-- Add text below the GIF with the same 3D effect -->
+        <div class="additional-text">
+            <p><span class="highlighted-text">It's so good man.</span></p>
+            <h2><span class="highlighted-text">Get our finest products below:</span></h2>
+        </div>
+
+        <!-- Product buttons with modals (clicking the button triggers the modal) -->
+        <div class="product-buttons">
+            <div class="product-button" onclick="showModal('Amphetamine', 'This is our 99.2% pure amphetamine, cooked by the legendary Heisenberg.<br><span class=\'plain-details-text\'>Price per gram: $12.49</span>', 'Availability: In Stock', 'Walter.png')">
+                <h3>Meth</h3>
+                <img src="Meth.png" alt="Product 1">
+                <p>Price per gram: 12.49$</p>
+                <p>Availability: In Stock</p>
+            </div>
+
+            <div class="product-button" onclick="showModal('Cocaine', 'This is our Bolivian cocaine 99.1% pure, made from El Santo with the dangerous ether (that is the reason for the purity).<br><span class=\'plain-details-text\'>Price per gram: $68.99</span>', 'Availability: In Stock', 'Cocaine_2.png')">
+                <h3>Cocaine</h3>
+                <img src="Cocaine.png" alt="Product 2">
+                <p>Price per gram: 68.99$</p>
+                <p>Availability: In Stock</p>
+            </div>
+
+            <div class="product-button" onclick="showModal('Plastic Explosive', 'This is our plastic explosive, it has many variants, some of them are AMFO, methyl-trinitrobenzene (TNT), fulminated mercury, cyclotrimethylene-trinitramine (C4) and much more. You can also order us to synthesize the one you want.<br><span class=\'plain-details-text\'>Price per gram: $1.47</span>', 'Availability: Out of Stock', 'C4_2.png')">
+                <h3>Plastic Explosive</h3>
+                <img src="C4.png" alt="Product 3">
+                <p>Price per gram: 1.47$</p>
+                <p>Availability: Out of Stock</p>
+            </div>
+        </div>
+
+        <!-- Modal container -->
+        <div id="myModal" class="modal">
+            <!-- Modal content -->
+            <div class="modal-content">
+                <div class="close-container">
+                    <span class="close" onclick="closeModal()">&times;</span>
+                </div>
+                <div class="details-text">
+                    <h2 id="modal-title"></h2>
+                    <p id="modal-info1"></p>
+                    <p id="modal-info2"></p>
+                </div>
+                <div class="details-image">
+                    <img id="modal-image" src="" alt="">
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- JavaScript to handle modals -->
+    <script>
+        function showModal(title, info1, info2, imageSrc) {
+            var modal = document.getElementById("myModal");
+            var modalTitle = document.getElementById("modal-title");
+            var modalInfo1 = document.getElementById("modal-info1");
+            var modalInfo2 = document.getElementById("modal-info2");
+            var modalImage = document.getElementById("modal-image");
+
+            modal.style.display = "block";
+            modalTitle.innerText = title;
+            modalInfo1.innerHTML = info1;
+            modalInfo2.innerHTML = info2;
+            modalImage.src = imageSrc;
+        }
+
+        function closeModal() {
+            var modal = document.getElementById("myModal");
+            modal.style.display = "none";
+        }
+    </script>
+</body>
+</html>
